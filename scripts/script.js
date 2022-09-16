@@ -5,6 +5,7 @@ const statusText = document.getElementById('status');
 let card1;
 let card2;
 let firstClick = true;
+let lock = false;
 
 (function shuffle() {
 	card.forEach((item) => {
@@ -16,6 +17,9 @@ let firstClick = true;
 card.forEach((card) => card.addEventListener('click', flip));
 
 function flip() {
+	if (lock == true) {
+		return;
+	}
 	if (firstClick) {
 		card1 = this;
 		firstClick = false;
@@ -26,11 +30,19 @@ function flip() {
 		this.classList.add('flip-card');
 		if (card1.dataset.framework === card2.dataset.framework) {
 			statusText.innerHTML = 'Matched';
-			card1.classList.toggle('active');
-			card1.classList.toggle('active');
-			card1.style.opacity = 0;
-			card2.style.opacity = 0;
+			lock = true;
+			setTimeout(() => {
+				card1.classList.toggle('active');
+				card1.classList.toggle('active');
+				card1.style.opacity = 0;
+				card2.style.opacity = 0;
+				lock = false;
+				firstClick = true;
+				card1 = null;
+				card2 = null;
+			}, 500);
 		} else {
+			lock = true;
 			setTimeout(() => {
 				card1.classList.remove('flip-card');
 				card2.classList.remove('flip-card');
@@ -38,7 +50,8 @@ function flip() {
 				firstClick = true;
 				card1 = null;
 				card2 = null;
-			}, 1500);
+				lock = false;
+			}, 1000);
 		}
 	}
 }
