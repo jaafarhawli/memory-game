@@ -6,6 +6,7 @@ let card1;
 let card2;
 let firstClick = true;
 let lock = false;
+let score = 0;
 
 (function shuffle() {
 	card.forEach((item) => {
@@ -16,7 +17,17 @@ let lock = false;
 
 card.forEach((card) => card.addEventListener('click', flip));
 
+/* card[0].addEventListener('click', flip);
+card[1].addEventListener('click', flip);
+card[2].addEventListener('click', flip);
+card[3].addEventListener('click', flip);
+card[4].addEventListener('click', flip);
+card[5].addEventListener('click', flip);
+ */
 function flip() {
+	if (this === card1) {
+		return;
+	}
 	if (lock == true) {
 		return;
 	}
@@ -36,6 +47,8 @@ function flip() {
 				card1.classList.toggle('active');
 				card1.style.opacity = 0;
 				card2.style.opacity = 0;
+				card1.removeEventListener('click', flip);
+				card2.removeEventListener('click', flip);
 				lock = false;
 				firstClick = true;
 				card1 = null;
