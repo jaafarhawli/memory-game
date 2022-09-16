@@ -27,9 +27,23 @@ h2 {
 }
 
 .card {
+	display: flex;
+	align-items: center;
 	width: 20vw;
 	min-width: 150px;
 	height: 30vh;
 	background-color: gray;
 	border-radius: 15px;
+	transition: transform 400ms;
+}
+
+.card:active {
+	transform: scale(0.95);
+	transition: transform 200ms;
+}
+
+.back-image {
+	/* display: none; */
+	width: 140px;
+	margin: auto;
 }
