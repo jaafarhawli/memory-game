@@ -1,6 +1,6 @@
-const cardsGrid = document.querySelectorAll('.cards');
 const card = document.querySelectorAll('.card');
 const statusText = document.getElementById('status');
+const reset = document.getElementById('reset');
 
 let card1;
 let card2;
@@ -17,13 +17,6 @@ let score = 0;
 
 card.forEach((card) => card.addEventListener('click', flip));
 
-/* card[0].addEventListener('click', flip);
-card[1].addEventListener('click', flip);
-card[2].addEventListener('click', flip);
-card[3].addEventListener('click', flip);
-card[4].addEventListener('click', flip);
-card[5].addEventListener('click', flip);
- */
 function flip() {
 	if (this === card1) {
 		return;
@@ -43,8 +36,8 @@ function flip() {
 			statusText.innerHTML = 'Matched';
 			lock = true;
 			setTimeout(() => {
-				card1.classList.toggle('active');
-				card1.classList.toggle('active');
+				card1.classList.toggle('flip-card');
+				card1.classList.toggle('flip-card');
 				card1.style.opacity = 0;
 				card2.style.opacity = 0;
 				card1.removeEventListener('click', flip);
@@ -57,6 +50,8 @@ function flip() {
 		} else {
 			lock = true;
 			setTimeout(() => {
+				/* card1.classList.toggle('flip-card');
+				card1.classList.toggle('flip-card'); */
 				card1.classList.remove('flip-card');
 				card2.classList.remove('flip-card');
 				statusText.innerHTML = 'Try again';
@@ -68,3 +63,17 @@ function flip() {
 		}
 	}
 }
+
+reset.addEventListener('click', () => {
+	card.forEach((element) => {
+		if (element.style.opacity == 0) {
+			element.style.opacity = 1;
+			element.classList.toggle('flip-card');
+		}
+	});
+	firstClick = true;
+	card1 = null;
+	card2 = null;
+	lock = false;
+	card.forEach((card) => card.addEventListener('click', flip));
+});

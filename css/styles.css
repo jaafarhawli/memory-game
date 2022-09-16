@@ -53,3 +53,20 @@ h2 {
 .card.flip-card {
 	transform: rotateY(180deg);
 }
+
+#reset {
+	display: block;
+	border-radius: 10px;
+	background-color: black;
+	margin: 20px auto;
+	width: 100px;
+	height: 45px;
+	font-size: 15px;
+	color: white;
+	transition: transform 400ms;
+}
+
+#reset:active {
+	transform: scale(0.95);
+	transition: transform 200ms;
+}
