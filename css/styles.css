@@ -9,6 +9,7 @@ h2 {
 	text-align: center;
 }
 
+/* Header */
 .header {
 	text-align: center;
 	margin: 20px 0 40px;
@@ -17,6 +18,7 @@ h2 {
 	border-bottom: 1px solid gray;
 }
 
+/* Cards' grid */
 .cards {
 	display: grid;
 	justify-content: center;
@@ -26,6 +28,7 @@ h2 {
 	margin: 30px;
 }
 
+/* Cards */
 .card {
 	display: flex;
 	align-items: center;
@@ -37,23 +40,24 @@ h2 {
 	transition: transform 400ms;
 	transform-style: preserve-3d;
 }
-
+/* Cards effect on click */
 .card:active {
 	transform: scale(0.95);
 	transition: transform 200ms;
 }
-
+/* Images inside cards */
 .back-image {
 	width: 140px;
 	margin: auto;
 	backface-visibility: hidden;
 	transform: rotateY(180deg);
 }
-
+/* Flip the card class */
 .card.flip-card {
 	transform: rotateY(180deg);
 }
 
+/* Reset button */
 #reset {
 	display: block;
 	border-radius: 10px;
@@ -65,7 +69,7 @@ h2 {
 	color: white;
 	transition: transform 400ms;
 }
-
+/* Reset button on click */
 #reset:active {
 	transform: scale(0.95);
 	transition: transform 200ms;
